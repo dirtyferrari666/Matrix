@@ -17,10 +17,22 @@ def print_by_columns(matrix, n, m):
             print(matrix[row][col])
         print()
 
+def get_positive_integer(prompt):
+    while True:
+        try:
+            value = int(input(prompt))
+            if value > 0:
+                return value
+            else:
+                print("Ошибка: введите положительное число.")
+        except ValueError:
+            print("Ошибка: введите целое число.")
+
 def main():
     print("Введите размеры матрицы:")
-    n = int(input("Количество строк (n): "))
-    m = int(input("Количество столбцов (m): "))
+    n = get_positive_integer("Количество строк (n): ")
+    m = get_positive_integer("Количество столбцов (m): ")
+    
     matrix = read_matrix(n, m)
     print_by_columns(matrix, n, m)
 
